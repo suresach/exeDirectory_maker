@@ -1,0 +1,20 @@
+import xlwt
+import xlrd
+
+wkbk = xlwt.Workbook()
+outsheet = wkbk.add_sheet('Sheet1')
+
+xlsfiles = [r'IFCB2009_01.xls',r'IFCB2009_02.xls',r'IFCB2009_03.xls',r'IFCB2009_04.xls',r'IFCB2009_05.xls',r'IFCB2009_06.xls',r'IFCB2009_07.xls',r'IFCB2009_08.xls',r'IFCB2009_09.xls',r'IFCB2009_10.xls',r'IFCB2009_11.xls',r'IFCB2009_12.xls',r'IFCB2009_13.xls',r'IFCB2009_14.xls',r'IFCB2009_15.xls',r'IFCB2009_16.xls',r'IFCB2009_17.xls',r'IFCB2009_18.xls',r'IFCB2009_19.xls',r'IFCB2009_20.xls',r'IFCB2009_21.xls',r'IFCB2009_22.xls',r'IFCB2009_23.xls',r'IFCB2009_24.xls',r'IFCB2009_25.xls',r'IFCB2009_26.xls',r'IFCB2009_27.xls',r'IFCB2009_28.xls',r'IFCB2009_29.xls',r'IFCB2009_30.xls',r'IFCB2009_31.xls',r'IFCB2009_32.xls',r'IFCB2009_33.xls',r'IFCB2009_34.xls',r'IFCB2009_35.xls',r'IFCB2009_36.xls',r'IFCB2009_37.xls',r'IFCB2009_38.xls',r'IFCB2009_39.xls',r'IFCB2009_40.xls',r'IFCB2009_41.xls',r'IFCB2009_42.xls',r'IFCB2009_43.xls',r'IFCB2009_44.xls',r'IFCB2009_45.xls',r'IFCB2009_46.xls',r'IFCB2009_47.xls',r'IFCB2009_48.xls',r'IFCB2009_49.xls',r'IFCB2009_50.xls',r'IFCB2009_51.xls',r'IFCB2009_52.xls',r'IFCB2009_53.xls',r'IFCB2009_54.xls',r'IFCB2009_55.xls',r'IFCB2009_56.xls',r'IFCB2009_57.xls',r'IFCB2009_58.xls',r'IFCB2009_59.xls',r'IFCB2009_60.xls',r'IFCB2009_61.xls',r'IFCB2009_62.xls',r'IFCB2009_63.xls',r'IFCB2009_64.xls',r'IFCB2009_65.xls',r'IFCB2009_66.xls',r'IFCB2009_67.xls',r'IFCB2009_68.xls',r'IFCB2009_69.xls',r'IFCB2009_70.xls',r'IFCB2009_71.xls',r'IFCB2009_72.xls',r'IFCB2009_73.xls',r'IFCB2009_74.xls',r'IFCB2009_75.xls',r'IFCB2009_76.xls',r'IFCB2009_77.xls',r'IFCB2009_78.xls',r'IFCB2009_79.xls',r'IFCB2009_80.xls',r'IFCB2009_81.xls',r'IFCB2009_82.xls',r'IFCB2009_83.xls',r'IFCB2009_84.xls',r'IFCB2009_85.xls',r'IFCB2009_86.xls',r'IFCB2009_87.xls',r'IFCB2009_88.xls',r'IFCB2009_89.xls',r'IFCB2009_90.xls',r'IFCB2009_91.xls',r'IFCB2009_92.xls',r'IFCB2009_93.xls',r'IFCB2009_94.xls',r'IFCB2009_95.xls',r'IFCB2009_96.xls',r'IFCB2009_97.xls',r'IFCB2009_98.xls',r'IFCB2009_99.xls',r'IFCB2009_100.xls',r'IFCB2009_101.xls',r'IFCB2009_102.xls',r'IFCB2009_104.xls',r'IFCB2009_105.xls',r'IFCB2009_106.xls',r'IFCB2009_107.xls',r'IFCB2009_108.xls',r'IFCB2009_109.xls',r'IFCB2009_111.xls',r'IFCB2009_112.xls',r'IFCB2009_113.xls',r'IFCB2009_114.xls',r'IFCB2009_116.xls',r'IFCB2009_117.xls',r'IFCB2009_118.xls',r'IFCB2009_119.xls',r'IFCB2009_120.xls',r'IFCB2009_121.xls',r'IFCB2009_122.xls',r'IFCB2009_123.xls',r'IFCB2009_124.xls',r'IFCB2009_125.xls',r'IFCB2009_126.xls',r'IFCB2009_127.xls',r'IFCB2009_128.xls',r'IFCB2009_129.xls',r'IFCB2009_130.xls',r'IFCB2009_131.xls',r'IFCB2009_132.xls',r'IFCB2009_133.xls',r'IFCB2009_135.xls',r'IFCB2009_136.xls',r'IFCB2009_137.xls',r'IFCB2009_138.xls',r'IFCB2009_139.xls',r'IFCB2009_140.xls',r'IFCB2009_141.xls',r'IFCB2009_142.xls',r'IFCB2009_143.xls',r'IFCB2009_144.xls',r'IFCB2009_145.xls',r'IFCB2009_146.xls',r'IFCB2009_147.xls',r'IFCB2009_148.xls',r'IFCB2009_149.xls',r'IFCB2009_150.xls',r'IFCB2009_151.xls',r'IFCB2009_152.xls',r'IFCB2009_153.xls',r'IFCB2009_154.xls',r'IFCB2009_155.xls',r'IFCB2009_156.xls',r'IFCB2009_157.xls',r'IFCB2009_158.xls',r'IFCB2009_159.xls',r'IFCB2009_160.xls',r'IFCB2009_161.xls',r'IFCB2009_162.xls',r'IFCB2009_163.xls',r'IFCB2009_164.xls',r'IFCB2009_165.xls',r'IFCB2009_166.xls',r'IFCB2009_167.xls',r'IFCB2009_170.xls',r'IFCB2009_171.xls',r'IFCB2009_172.xls',r'IFCB2009_173.xls',r'IFCB2009_174.xls',r'IFCB2009_175.xls',r'IFCB2009_176.xls',r'IFCB2009_177.xls',r'IFCB2009_178.xls',r'IFCB2009_179.xls',r'IFCB2009_180.xls',r'IFCB2009_181.xls',r'IFCB2009_182.xls',r'IFCB2009_183.xls',r'IFCB2009_184.xls',r'IFCB2009_185.xls',r'IFCB2009_186.xls',r'IFCB2009_187.xls']
+
+outrow_idx = 0
+firstfile = True 
+for f in xlsfiles:
+    insheet = xlrd.open_workbook(f).sheets()[0]
+    for row_idx in range(0 if firstfile else 1,insheet.nrows):
+        for col_idx in range(insheet.ncols):
+            outsheet.write(outrow_idx, col_idx, 
+                           insheet.cell_value(row_idx, col_idx))
+        firstfile = False        
+        outrow_idx += 1
+    	
+wkbk.save(r'combined.xlsx')
